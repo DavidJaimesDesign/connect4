@@ -39,19 +39,24 @@ class Board
 	def display
 		empty = "_"
 		black = "\u26ab".encode('utf-8')
-		white = "\u26aa".encode('utf-8')
+		white = "O" #"\u26aa".encode('utf-8')
 
-		display_board = board.map do |y,x|
-			if [y][x].nil?
-				[y][x] = empty
+		display_board = board.map do |row|
+			row.map do |cell|
+				if cell.nil?
+					cell = empty
 
-			elsif [y][x].is_node? && [y][x].color == "black"
-				[y][x] = black
+				elsif cell.is_a?(Node) && cell.color == "black"
+					cell = black
 
-			elsif [y][x].is_node? && [y][x].color == "white"
-				[y][x] = white
+				elsif cell.is_a?(Node) && cell.color == "white"
+					cell = white
+				end
 			end
 		end
-		puts "|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n"
+		display_board.each do |row|
+			row.each{|cell| print "|#{cell}|" }
+			print "\n"
+		end 
 	end
 end

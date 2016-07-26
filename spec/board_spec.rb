@@ -33,17 +33,19 @@ describe Board do
 	end
 
 	context "displaying values" do 
+		game_board_dis = Board.new
+
 		it "can display the empty board" do
-			expect{game_board.display}.to output("|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n").to_stdout
+			expect{game_board_dis.display}.to output("|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n").to_stdout
 		end
 
 		it "can display whenever a node is added according to color" do 
 			node1 = Node.new
 			node1.color = "black"
 			black = "\u26ab".encode('utf-8')
-			game_board.first_move(node1, 4)
+			game_board_dis.first_move(node1, 4)
 
-			expect{game_board.display}.to output("|_|_|_|_|#{black}|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n|_|_|_|_|_|_|_|\n").to_stdout
+			expect{game_board_dis.display}.to output("|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||_||_||_|\n|_||_||_||_||#{black}||_||_|\n").to_stdout
 		end
 
 		it "can display the current state of the game" do
