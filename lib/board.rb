@@ -59,4 +59,27 @@ class Board
 			print "\n"
 		end 
 	end
+
+	def connect_nodes(node) 
+		positions = {
+			:center 	 => nil,
+			:below  	 => nil,
+			:left   	 => nil,
+			:right     	 => nil, 
+			:left_lower  => nil,
+			:right_lower => nil,
+			:left_upper  => nil,
+			:right_upper => nil
+		}
+		below = 0
+		left = 0
+		right = 0
+		left_lower = 0 
+		left_upper = 0
+		right_lower = 0
+		right_upper = 0
+
+		positions[:center] = board.index(node)
+		return positions
+	end
 end
