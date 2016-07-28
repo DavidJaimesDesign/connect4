@@ -122,10 +122,11 @@ describe Board do
 		game_board2.move(node10, 3)#upper_left
 
 		positions3 = game_board2.sorounding_nodes(node4)
-		game_board2.connect_nodes(node4)
+		game_board2.connect_nodes(node4, positions3)
 
 		it "connects the prime node to the sorounding nodes using the sorounding_nodes" do
 			expect(node4.vertical_node).to eql(node3)
+			expect(node4.left).to eql(node8)
 		end
 
 		it "does not connect with nodes of different colors" do
