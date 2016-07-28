@@ -60,7 +60,7 @@ class Board
 		end 
 	end
 
-	def connect_nodes(node) 
+	def sorounding_nodes(node)#A LOOP SEARCH 
 		positions = {
 			:center 	 => nil,
 			:below  	 => nil,
@@ -71,15 +71,21 @@ class Board
 			:left_upper  => nil,
 			:right_upper => nil
 		}
-		below = 0
-		left = 0
-		right = 0
-		left_lower = 0 
-		left_upper = 0
-		right_lower = 0
-		right_upper = 0
+		board.each_with_index do |v,i|
+			v.each_with_index do |v0,i0|
+				if v0 == node
+					positions[:center] 		= "[#{i}][#{i0}]"
+					positions[:below] 		= "[#{i + 1}][#{i0}]"
+					positions[:right] 		= "[#{i}][#{i0 + 1}]"
+					positions[:left] 		= "[#{i}][#{i0 - 1}]"
+					positions[:right_upper] = "[#{i - 1}][#{i0 + 1}]"
+					positions[:right_lower] = "[#{i + 1}][#{i0 + 1}]"
+					positions[:left_upper]  = "[#{i - 1}][#{i0 - 1}]"
+					positions[:left_lower]  = "[#{i + 1}][#{i0 - 1}]"
+				end
+			end
+		end	
 
-		positions[:center] = board.index(node)
-		return positions
+ 		return positions
 	end
 end

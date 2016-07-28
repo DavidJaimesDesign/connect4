@@ -14,7 +14,7 @@ describe Board do
 		#you can actually add anything to the board. The board only displays the nodes?
 		it "adds the first node to the 0 array" do
 			node = Node.new
-			node.color = "black"
+			node.color = "0"
 			game_board.first_move(node, 4)
 			expect(game_board.board[5][4]).to eql(node)
 		end
@@ -22,64 +22,74 @@ describe Board do
 		it "adds nodes on top of each other" do
 			node1 = Node.new
 			node2 = Node.new
-			node1.color = "black"
-			node2.color = "white"
+			node1.color = "1"
+			node2.color = "2"
 			game_board.first_move(node1, 4)
 			game_board.move(node2, 4)
 			expect(game_board.board[5][4]).to eql(node1)
 			expect(game_board.board[4][4]).to eql(node2)
 		end
 	end
-	describe "#connect_nodes" do
-		node = Node.new
-		node.color = "black"
-		game_board.first_move(node, 4)
-		positions = game_board.connect_nodes(node)
+	describe "#sorounding_nodes finds the indexes for the indices that sorround the node" do
+		game_board2 = Board.new
+		node3  = Node.new
+		node4  = Node.new
+		node5  = Node.new
+		node6  = Node.new
+		node7  = Node.new
+		node8  = Node.new
+		node9  = Node.new
+		node10 = Node.new
+		node3.color  = "4"
+		node4.color  = "5"
+		node5.color  = "6"
+		node6.color  = "7"
+		node7.color  = "8"
+		node8.color  = "9"
+		node9.color  = "10"
+		node10.color = "11"
 
-		it "finds the index of the node" do 
-			expect(positions[:center]).to eql([0][4])
+		game_board2.first_move(node3, 4)
+		game_board2.move(node4,  4)
+		game_board2.move(node5,  5)#lower_right
+		game_board2.move(node6,  3)#lower_left
+		game_board2.move(node7,  5)#right
+		game_board2.move(node8,  3)#left
+		game_board2.move(node9,  5)#upper_right
+		game_board2.move(node10, 3)#upper_left
+
+		positions = game_board2.sorounding_nodes(node4)
+
+		describe "Finds sorrounding values" do
+			it "finds the index of the node" do 
+				expect(positions[:center]).to eql("[4][4]")
+			end
+
+			it "finds the node below" do
+				expect(positions[:below]).to eql("[5][4]")
+			end
+
+			it "finds the lower diagonal nodes" do
+				expect(positions[:right_lower]).to eql("[5][5]")
+				expect(positions[:left_lower]).to  eql("[5][3]")
+			end
+
+			it "finds the horizontal nodes" do
+				expect(positions[:right]).to eql("[4][5]")
+				expect(positions[:left]).to  eql("[4][3]")
+			end
+
+			it "finds the upper diagonal nodes" do
+				expect(positions[:right_upper]).to eql("[3][5]")
+				expect(positions[:left_upper]).to  eql("[3][3]")
+			end
+
+			it "does not link nodes that are not the same color" do
+			end
+
+			it "does not link nodes that are not adjacent" do
+			end
 		end
-
-		it "finds the node below" do
-			expect(positions[:below]).to eql(nil)
-		end
-
-		it "finds the lower diagonal nodes" do
-			expect(positions[:lower_right]).to eql(nil)
-			expect(positions[:lower_left]).to eql(nil)
-		end
-
-		it "finds the horizontal nodes" do
-			expect(positions[:right]).to eql(nil)
-			expect(positions[:left]).to eql(nil)
-		end
-
-		it "finds the upper diagonal nodes" do
-			expect(positions[:upper_right]).to eql(nil)
-			expect(positions[:upper_left]).to eql(nil)
-		end
-
-		it "links the nodes of the same color together if they are adjacent" do 
-			node3 = Node.new
-			node4 = Node.new
-			node5 = Node.new
-			node5.color = "black"
-			node4.color = "white"
-			node5.color = "black"
-
-			game_board.first_move(node3, 4)
-			game_board.move(node4, 4)
-			game_board.move(node5, 3)
-
-			expect(node5.right_node).to eql(node3)
-		end
-
-		it "does not link nodes that are not the same color" do
-		end
-
-		it "does not link nodes that are not adjacent" do
-		end
-
 	end
 
 	context "displaying values" do 
