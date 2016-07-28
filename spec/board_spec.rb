@@ -86,15 +86,46 @@ describe Board do
 
 			it "sets the lower nodes to nil if they are 'lower' then the lowest row" do
 				positions2 = game_board2.sorounding_nodes(node3)
-				expect(positions[:below]).to eql("TO LOW")
-				expect(positions[:right_lower]).to eql("TO LOW")
-				expect(positions[:left_up]).to eql("TO LOW")
+				expect(positions2[:below]).to eql(nil)
+				expect(positions2[:right_lower]).to eql(nil)
+				expect(positions2[:left_up]).to eql(nil)
 			end
 		end
 	end
 
 	describe "#connect_nodes" do
+		game_board2 = Board.new
+		node3  = Node.new
+		node4  = Node.new
+		node5  = Node.new
+		node6  = Node.new
+		node7  = Node.new
+		node8  = Node.new
+		node9  = Node.new
+		node10 = Node.new
+		node3.color  = "4"
+		node4.color  = "5"
+		node5.color  = "6"
+		node6.color  = "7"
+		node7.color  = "8"
+		node8.color  = "9"
+		node9.color  = "10"
+		node10.color = "11"
+
+		game_board2.first_move(node3, 4)
+		game_board2.move(node4,  4)
+		game_board2.move(node5,  5)#lower_right
+		game_board2.move(node6,  3)#lower_left
+		game_board2.move(node7,  5)#right
+		game_board2.move(node8,  3)#left
+		game_board2.move(node9,  5)#upper_right
+		game_board2.move(node10, 3)#upper_left
+
+		positions3 = game_board2.sorounding_nodes(node4)
+		game_board2.connect_nodes(node4)
+
 		it "connects the prime node to the sorounding nodes using the sorounding_nodes" do
+			expect(node4.vertical_node).to eql(node3)
 		end
 
 		it "does not connect with nodes of different colors" do
