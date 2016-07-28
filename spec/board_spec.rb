@@ -84,11 +84,23 @@ describe Board do
 				expect(positions[:left_upper]).to  eql("[3][3]")
 			end
 
-			it "does not link nodes that are not the same color" do
+			it "sets the lower nodes to nil if they are 'lower' then the lowest row" do
+				positions2 = game_board2.sorounding_nodes(node3)
+				expect(positions[:below]).to eql("TO LOW")
+				expect(positions[:right_lower]).to eql("TO LOW")
+				expect(positions[:left_up]).to eql("TO LOW")
 			end
+		end
+	end
 
-			it "does not link nodes that are not adjacent" do
-			end
+	describe "#connect_nodes" do
+		it "connects the prime node to the sorounding nodes using the sorounding_nodes" do
+		end
+
+		it "does not connect with nodes of different colors" do
+		end
+
+		it "does not connect not adjacent nodes" do
 		end
 	end
 
