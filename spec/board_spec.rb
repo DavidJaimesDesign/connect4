@@ -86,9 +86,9 @@ describe Board do
 
 			it "sets the lower nodes to nil if they are 'lower' then the lowest row" do
 				positions2 = game_board2.sorounding_nodes(node3)
-				expect(positions2[:below]).to eql(nil)
-				expect(positions2[:right_lower]).to eql(nil)
-				expect(positions2[:left_up]).to eql(nil)
+				expect(positions2[:below]).to eql("range error")
+				expect(positions2[:right_lower]).to eql("range error")
+				expect(positions2[:left_lower]).to eql("range error")
 			end
 		end
 	end
