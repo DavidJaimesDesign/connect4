@@ -103,14 +103,14 @@ describe Board do
 		node8  = Node.new
 		node9  = Node.new
 		node10 = Node.new
-		node3.color  = "4"
-		node4.color  = "5"
-		node5.color  = "6"
-		node6.color  = "7"
-		node7.color  = "8"
-		node8.color  = "9"
-		node9.color  = "10"
-		node10.color = "11"
+		node3.color  = "1"
+		node4.color  = "1"
+		node5.color  = "1"
+		node6.color  = "1"
+		node7.color  = "1"
+		node8.color  = "1"
+		node9.color  = "1"
+		node10.color = "1"
 
 		game_board2.first_move(node3, 4)
 		game_board2.move(node4,  4)
@@ -135,6 +135,36 @@ describe Board do
 		end
 
 		it "does not connect with nodes of different colors" do
+		game_board = Board.new
+		node1  = Node.new
+		node2  = Node.new
+		node3  = Node.new
+		node4  = Node.new
+		node5  = Node.new
+		node6  = Node.new
+		node7  = Node.new
+		node8 = Node.new
+		node1.color  = "white"
+		node2.color  = "white"
+		node3.color  = "white"
+		node4.color  = "black"
+		node5.color  = "black"
+		node6.color  = "white"
+		node7.color  = "black"
+		node8.color = "black"
+
+		game_board2.first_move(node1, 4)
+		game_board2.move(node2,  4)
+		game_board2.move(node3,  5)#lower_right
+		game_board2.move(node4,  3)#lower_left
+		game_board2.move(node5,  5)#right
+		game_board2.move(node6,  3)#left
+		game_board2.move(node7,  5)#upper_right
+		game_board2.move(node8, 3)#upper_left
+
+		positions = game_board2.sorounding_nodes(node2)
+		game_board.connect_nodes(node2, positions)
+
 		end
 
 		it "does not connect not adjacent nodes" do

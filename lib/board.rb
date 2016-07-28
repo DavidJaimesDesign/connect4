@@ -7,7 +7,7 @@ class Board
 				 [nil, nil, nil, nil, nil, nil, nil],
 				 [nil, nil, nil, nil, nil, nil, nil],
 				 [nil, nil, nil, nil, nil, nil, nil]
-	end
+	end 
 
 	def first_move(node, column)
 		board[5][column] = node
@@ -20,7 +20,7 @@ class Board
 		elsif board[4][column].nil?
 			board[4][column] = node
 
-		elsif board[3][column].nil?
+		elsif board[3][column].nil? 
 			board[3][column] = node
 
 		elsif board[2][column].nil?
@@ -121,7 +121,7 @@ class Board
 		i_right_lower  = positions[:right_lower]
 		i0_right_lower = positions[:right_lower]
 		i_right_lower  = i_right_lower[1].to_i
-		i0_right_lower = i_right_lower[4].to_i
+		i0_right_lower = i0_right_lower[4].to_i
 
 		node.add_vert( board[i_vert][i0_vert] ) unless board[i_vert][i0_vert] == nil  
 
@@ -135,7 +135,7 @@ class Board
 
 		node.add_lower_left( board[i_left_lower][i0_left_lower] ) unless board[i_left_lower][i0_left_lower] == nil
 
-		node.add_lower_right( board[i_right_lower][i0_right_lower] ) unless board[i_right_lower][i0_right_lower] == nil
+		node.add_lower_right(board[i_right_lower][i0_right_lower])
 
 		return node
 	end
