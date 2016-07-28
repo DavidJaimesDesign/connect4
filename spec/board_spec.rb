@@ -86,9 +86,9 @@ describe Board do
 
 			it "sets the lower nodes to nil if they are 'lower' then the lowest row" do
 				positions2 = game_board2.sorounding_nodes(node3)
-				expect(positions2[:below]).to eql("range error")
-				expect(positions2[:right_lower]).to eql("range error")
-				expect(positions2[:left_lower]).to eql("range error")
+				expect(positions2[:below]).to eql(nil)
+				expect(positions2[:right_lower]).to eql(nil)
+				expect(positions2[:left_lower]).to eql(nil)
 			end
 		end
 	end
@@ -125,8 +125,13 @@ describe Board do
 		game_board2.connect_nodes(node4, positions3)
 
 		it "connects the prime node to the sorounding nodes using the sorounding_nodes" do
-			expect(node4.vertical_node).to eql(node3)
-			expect(node4.left).to eql(node8)
+			expect(node4.vertical_node).to 			   eql(node3)
+			expect(node4.left_node).to      		   eql(node8)
+			expect(node4.right_node).to    			   eql(node7)
+			expect(node4.upper_left_diagonal_node).to  eql(node10)
+			expect(node4.upper_right_diagonal_node).to eql(node9)
+			expect(node4.lower_left_diagonal_node).to  eql(node6)
+			expect(node4.lower_right_diagonal_node).to eql(node5)
 		end
 
 		it "does not connect with nodes of different colors" do

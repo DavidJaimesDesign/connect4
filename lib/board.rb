@@ -63,11 +63,11 @@ class Board
 	def sorounding_nodes(node)#A LOOP SEARCH 
 		positions = {
 			:center 	 => nil,
-			:below  	 => "range error",
+			:below  	 => nil,
 			:left   	 => nil,
 			:right     	 => nil, 
-			:left_lower  => "range error",
-			:right_lower => "range error",
+			:left_lower  => nil,
+			:right_lower => nil,
 			:left_upper  => nil,
 			:right_upper => nil
 		}
@@ -96,45 +96,47 @@ class Board
 		i_left  = positions[:left]
 		i0_left = positions[:left]
 		i_left  = i_left[1].to_i
-		i0_left = i_left[4].to_i
+		i0_left = i0_left[4].to_i
 
-		i_right  = positions[:left]
-		i0_right = positions[:left]
-		i_right  = i_left[1].to_i
-		i0_right = i_left[4].to_i
+		i_right  = positions[:right]
+		i0_right = positions[:right]
+		i_right  = i_right[1].to_i
+		i0_right = i0_right[4].to_i
 
 		i_right_upper  = positions[:right_upper]
 		i0_right_upper = positions[:right_upper]
-		i_right_upper  = i_left[1].to_i
-		i0_right_upper = i_left[4].to_i
+		i_right_upper  = i_right_upper[1].to_i
+		i0_right_upper = i0_right_upper[4].to_i
 
 		i_left_upper  = positions[:left_upper]
 		i0_left_upper = positions[:left_upper]
-		i_left_upper  = i_left[1].to_i
-		i0_left_upper = i_left[4].to_i
+		i_left_upper  = i_left_upper[1].to_i
+		i0_left_upper = i0_left_upper[4].to_i
 
 		i_left_lower  = positions[:left_lower]
 		i0_left_lower = positions[:left_lower]
-		i_left_lower  = i_left[1].to_i
-		i0_left_lower = i_left[4].to_i
+		i_left_lower  = i_left_lower[1].to_i
+		i0_left_lower = i0_left_lower[4].to_i
 
 		i_right_lower  = positions[:right_lower]
 		i0_right_lower = positions[:right_lower]
-		i_right_lower  = i_left[1].to_i
-		i0_right_lower = i_left[4].to_i
+		i_right_lower  = i_right_lower[1].to_i
+		i0_right_lower = i_right_lower[4].to_i
 
 		node.add_vert( board[i_vert][i0_vert] ) unless board[i_vert][i0_vert] == nil  
 
-		node.add_left( board[i_left][i0_left] ) unless board[i_left][i0] == nil 
+		node.add_left( board[i_left][i0_left] )
 
-		node.add_right( board[i_right][i0_right] ) unless board[][] == nil
+		node.add_right( board[i_right][i0_right] ) unless board[i_right][i0_right] == nil
 
-		node.add_upper_left( board[i_left_upper][i0_left_upper] ) unless board[][] == nil
+		node.add_upper_left( board[i_left_upper][i0_left_upper] ) unless board[i_left_upper][i0_left_upper] == nil
 
-		node.add_upper_right( board[i_right_upper][i0_right_upper] ) unless board[][] == nil
+		node.add_upper_right( board[i_right_upper][i0_right_upper] ) unless board[i_right_upper][i0_right_upper] == nil
 
-		node.add_lower_left( board[i_left_lower][i0_left_lower] ) unless board[][] == nil
+		node.add_lower_left( board[i_left_lower][i0_left_lower] ) unless board[i_left_lower][i0_left_lower] == nil
 
-		node.add_lower_right( board[i_right_lower][i0_left_lower] ) unless board[][] == nil
+		node.add_lower_right( board[i_right_lower][i0_right_lower] ) unless board[i_right_lower][i0_right_lower] == nil
+
+		return node
 	end
 end
