@@ -88,54 +88,70 @@ class Board
  		return positions
 	end
 	def connect_nodes(node, positions) #rip the string appart and convert i to a int
+		node_color = node.color
+
 		i_vert  = positions[:below]
 		i0_vert = positions[:below]
-		i_vert  = i_vert[1].to_i
-		i0_vert = i0_vert[4].to_i
+		i_vert  = i_vert[1].to_i  unless  i_vert  == nil
+		i0_vert = i0_vert[4].to_i unless  i0_vert == nil
 
 		i_left  = positions[:left]
 		i0_left = positions[:left]
-		i_left  = i_left[1].to_i
-		i0_left = i0_left[4].to_i
+		i_left  = i_left[1].to_i  unless  i_left  == nil
+		i0_left = i0_left[4].to_i unless  i0_left == nil
 
 		i_right  = positions[:right]
 		i0_right = positions[:right]
-		i_right  = i_right[1].to_i
-		i0_right = i0_right[4].to_i
+		i_right  = i_right[1].to_i  unless  i_right  == nil
+		i0_right = i0_right[4].to_i unless  i0_right == nil
 
 		i_right_upper  = positions[:right_upper]
 		i0_right_upper = positions[:right_upper]
-		i_right_upper  = i_right_upper[1].to_i
-		i0_right_upper = i0_right_upper[4].to_i
+		i_right_upper  = i_right_upper[1].to_i  unless  i_right_upper  == nil
+		i0_right_upper = i0_right_upper[4].to_i unless  i0_right_upper == nil
 
 		i_left_upper  = positions[:left_upper]
 		i0_left_upper = positions[:left_upper]
-		i_left_upper  = i_left_upper[1].to_i
-		i0_left_upper = i0_left_upper[4].to_i
+		i_left_upper  = i_left_upper[1].to_i  unless  i_left_upper  == nil
+		i0_left_upper = i0_left_upper[4].to_i unless  i0_left_upper == nil
 
 		i_left_lower  = positions[:left_lower]
 		i0_left_lower = positions[:left_lower]
-		i_left_lower  = i_left_lower[1].to_i
-		i0_left_lower = i0_left_lower[4].to_i
+		i_left_lower  = i_left_lower[1].to_i  unless  i_left_lower  == nil
+		i0_left_lower = i0_left_lower[4].to_i unless  i0_left_lower == nil
 
 		i_right_lower  = positions[:right_lower]
 		i0_right_lower = positions[:right_lower]
-		i_right_lower  = i_right_lower[1].to_i
-		i0_right_lower = i0_right_lower[4].to_i
+		i_right_lower  = i_right_lower[1].to_i  unless  i_right_lower  == nil
+		i0_right_lower = i0_right_lower[4].to_i unless  i0_right_lower == nil
 
-		node.add_vert( board[i_vert][i0_vert] ) unless board[i_vert][i0_vert] == nil  
+		if board[i_vert.to_i][i0_vert.to_i] != nil 
+			node.add_vert( board[i_vert][i0_vert] ) unless board[i_vert][i0_vert].color != node_color 
+		end
 
-		node.add_left( board[i_left][i0_left] )
+		if board[i_left.to_i][i0_left.to_i] != nil
+			node.add_left( board[i_left][i0_left] ) unless board[i_left][i0_left].color != node_color 
+		end
 
-		node.add_right( board[i_right][i0_right] ) unless board[i_right][i0_right] == nil
+		if board[i_right.to_i][i0_right.to_i] != nil
+			node.add_right( board[i_right][i0_right] ) unless board[i_right][i0_right].color != node_color 
+		end
 
-		node.add_upper_left( board[i_left_upper][i0_left_upper] ) unless board[i_left_upper][i0_left_upper] == nil
+		if board[i_left_upper.to_i][i0_left_upper.to_i] != nil
+			node.add_upper_left( board[i_left_upper][i0_left_upper] ) unless board[i_left_upper][i0_left_upper].color != node_color 
+		end
 
-		node.add_upper_right( board[i_right_upper][i0_right_upper] ) unless board[i_right_upper][i0_right_upper] == nil
+		if board[i_right_upper.to_i][i0_right_upper.to_i] != nil
+			node.add_upper_right( board[i_right_upper][i0_right_upper] ) unless board[i_right_upper][i0_right_upper].color != node_color 
+		end
 
-		node.add_lower_left( board[i_left_lower][i0_left_lower] ) unless board[i_left_lower][i0_left_lower] == nil
+		if board[i_left_lower.to_i][i0_left_lower.to_i] != nil
+			node.add_lower_left( board[i_left_lower][i0_left_lower] ) unless board[i_left_lower][i0_left_lower].color != node_color 
+		end
 
-		node.add_lower_right(board[i_right_lower][i0_right_lower])
+		if board[i_right_lower.to_i][i0_right_lower.to_i] != nil
+			node.add_lower_right(board[i_right_lower][i0_right_lower]) unless board[i_right_lower][i0_right_lower].color != node_color 
+		end
 
 		return node
 	end

@@ -12,22 +12,21 @@ describe Game do
 		end
 	end
 
-	context "Making moves" do
-		it "cycles through the available sorrounding nodes" do 
-		end
-
-		it "it can select nodes of the same color" do
-		end
-
-		it "it adds those nodes to the new node" do
-		end
-	end
-
 	context "Victory Check" do 
-		describe "#game_over" do
-		end
+	new_game = Game.new
+	node = N
+		describe "#win_check" do
+			new_game.win_check(node)
+			describe "pahse 1: node links discovery" do
+				
+			end
 
-		describe "#winner" do
-		end 
+			describe "phase 2: node links length calculation" do
+			end
+
+			describe "phase 3: end game or continue" do #this could be a seperate method
+
+			end
+		end
 	end
 end

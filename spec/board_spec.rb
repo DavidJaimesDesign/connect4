@@ -153,21 +153,80 @@ describe Board do
 		node7.color  = "black"
 		node8.color = "black"
 
-		game_board2.first_move(node1, 4)
-		game_board2.move(node2,  4)
-		game_board2.move(node3,  5)#lower_right
-		game_board2.move(node4,  3)#lower_left
-		game_board2.move(node5,  5)#right
-		game_board2.move(node6,  3)#left
-		game_board2.move(node7,  5)#upper_right
-		game_board2.move(node8, 3)#upper_left
+		game_board.first_move(node1, 4)#bottom
+		game_board.move(node2,  4)
+		game_board.move(node3,  5)#lower_right
+		game_board.move(node4,  3)#lower_left
+		game_board.move(node5,  5)#right
+		game_board.move(node6,  3)#left
+		game_board.move(node7,  5)#upper_right
+		game_board.move(node8, 3)#upper_left
 
-		positions = game_board2.sorounding_nodes(node2)
+		positions = game_board.sorounding_nodes(node2)
 		game_board.connect_nodes(node2, positions)
+
+		expect(node2.vertical_node).to 			   eql(node1)
+		expect(node2.lower_left_diagonal_node).to  eql(nil)
+		expect(node2.lower_right_diagonal_node).to eql(node3)
+		expect(node2.left_node).to 				   eql(node6)
+		expect(node2.right_node).to 			   eql(nil)
+		expect(node2.upper_right_diagonal_node).to eql(nil)
+		expect(node2.upper_left_diagonal_node).to  eql(nil)
 
 		end
 
-		it "does not connect not adjacent nodes" do
+		it "does not throw an error when there are empty values in the sorrounding cells" do
+		game_board = Board.new
+		node1  = Node.new
+		node2  = Node.new
+		node3  = Node.new
+		node4  = Node.new
+		node5  = Node.new
+		node6  = Node.new
+
+		node1.color  = "white"
+		node2.color  = "white"
+		node3.color  = "white"
+		node4.color  = "white"
+		node5.color  = "white"
+		node6.color  = "white"
+
+
+		game_board.first_move(node1, 4)#bottom
+		game_board.move(node2,  4)
+		game_board.move(node3,  5)#lower_right
+		game_board.move(node4,  3)#lower_left
+		game_board.move(node5,  5)#right
+		game_board.move(node6,  5)#upper_right
+
+		positions = game_board.sorounding_nodes(node2)
+		game_board.connect_nodes(node2, positions)
+
+		expect(node2.vertical_node).to 			   eql(node1)
+		expect(node2.left_node).to      		   eql(nil)
+		expect(node2.right_node).to    			   eql(node5)
+		expect(node2.upper_left_diagonal_node).to  eql(nil)
+		expect(node2.upper_right_diagonal_node).to eql(node6)
+		expect(node2.lower_left_diagonal_node).to  eql(node4)
+		expect(node2.lower_right_diagonal_node).to eql(node3)
+		end
+
+		it "does not throw an error if positions are outside the board range" do
+			game_board = Board.new
+			node = Node.new
+			node.color  = "white"
+
+			positions = game_board.sorounding_nodes(node)
+			game_board.connect_nodes(node, positions)
+
+			expect(node.vertical_node).to 			   eql(nil)
+			expect(node.left_node).to      		   eql(nil)
+			expect(node.right_node).to    			   eql(nil)
+			expect(node.upper_left_diagonal_node).to  eql(nil)
+			expect(node.upper_right_diagonal_node).to eql(nil)
+			expect(node.lower_left_diagonal_node).to  eql(nil)
+			expect(node.lower_right_diagonal_node).to eql(nil)
+
 		end
 	end
 
