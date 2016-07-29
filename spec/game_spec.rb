@@ -1,7 +1,7 @@
 require 'game'
 require 'node'
 require 'board'
-
+#class has been archived will no longer be part of project but will remain in the app folders
 describe Game do
 	context "New Game" do
 		describe "#Initialize" do

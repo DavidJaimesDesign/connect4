@@ -155,4 +155,13 @@ class Board
 
 		return node
 	end
+
+	def win_check(node)
+		return "ERROR" if node == nil
+		if node.right_node != nil
+			true
+		else
+			false
+		end
+	end 
 end
