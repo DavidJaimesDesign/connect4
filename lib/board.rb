@@ -7,7 +7,7 @@ class Board
 				 [nil, nil, nil, nil, nil, nil, nil],
 				 [nil, nil, nil, nil, nil, nil, nil],
 				 [nil, nil, nil, nil, nil, nil, nil]
-	end 
+	end  
 
 	def first_move(node, column)
 		board[5][column] = node

@@ -9,7 +9,7 @@ class Node
 		@upper_right_diagonal_node = params.fetch(:upper_right_diagonal_node, nil)
 		@lower_left_diagonal_node  = params.fetch(:lower_left_diagonal_node, nil)
 		@lower_right_diagonal_node = params.fetch(:lower_right_diagonal_node, nil)
-	end
+	end 
 
 	def add_vert(node)
 		@vertical_node = node

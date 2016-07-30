@@ -151,7 +151,7 @@ describe Board do
 		node5.color  = "black"
 		node6.color  = "white"
 		node7.color  = "black"
-		node8.color = "black"
+		node8.color  = "black"
 
 		game_board.first_move(node1, 4)#bottom
 		game_board.move(node2,  4)

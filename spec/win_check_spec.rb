@@ -78,7 +78,11 @@ describe Win_Check do
 			@board.connect_nodes(@node3, positions)
 
 			@victory_check = Win_Check.new(@node, @board)
-		end
+			end
+
+			it "responds to #check_right method" do
+				expect(@victory_check).to respond_to(:right_check)
+			end
 
 			it "checks for a win condition to the right of the prime node" do
 				expect(@victory_check.right_check).to eq(true)
