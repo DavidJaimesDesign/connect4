@@ -1,0 +1,15 @@
+/home/skylx/.rvm/rubies/ruby-2.2.4/bin/ruby -r ./siteconf20160730-2609-yfli76.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling locker.c
+compiling context.c
+compiling byebug.c
+compiling threads.c
+compiling breakpoint.c
+linking shared-object byebug/byebug.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20160730-2609-10yxhk3/byebug

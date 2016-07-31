@@ -9,38 +9,25 @@ describe Win_Check do
 		describe "#initialize" do 
 			before (:each) do
 				@node  = Node.new
-				@board = Board.new
 			end
 			it "initializes by taking in the board and the prime node" do
-				node = @node
-				board = @board
-				victory_check = Win_Check.new(node, board)
-				expect(victory_check.node).to be_a(Node)
-				expect(victory_check.board).to be_a(Board)
+				victory_check = Win_Check.new(@node)
+				expect(victory_check.node).to be_instance_of(Node)
 			end
 
 			it "can have the node values changed" do
-				node = @node
-				board = @board
-				victory_check = Win_Check.new(node, board)
+				victory_check = Win_Check.new(@node)
 				victory_check.node.color = "Black"
 				expect(victory_check.node.color).to eq("Black")
 			end
 
 			it "can see the nodes connected to the prime node" do
-				node = @node
-				board = @board
 				node2 = Node.new
-				node.color = "black"
+				@node.color = "black"
 				node2.color = "black"
-
-				board.first_move(node, 4)
-				board.move(node2, 3)
-				positions = board.sorounding_nodes(node2)
-				board.connect_nodes(node2, positions)
-
-				victory_check = Win_Check.new(node2, board)
-				expect(victory_check.node.right_node).to eq(node)
+				@node.add_right(node2)
+				victory_check = Win_Check.new(@node)
+				expect(victory_check.node.right_node).to eq(node2)
 
 			end
 		end
@@ -48,40 +35,22 @@ describe Win_Check do
 	context "Testing various victory methods" do
 		describe "#right_check" do
 			before(:each) do
-			@node0 = Node.new(color: "black")
-			@node1 = Node.new(color: "black")
-			@node2 = Node.new(color: "black")
-			@node3 = Node.new(color: "black")
+				@node0 = double('Node')
+				@node1 = double('Node')
+				@node2 = double('Node')
+				@node3 = double('Node')
 
-			@board = Board.new
+				@node0.stub(:right_node).and_return(@node1)
+				@node1.stub(:right_node).and_return(@node2)
+				@node2.stub(:right_node).and_return(@node3)
 
-			@board.first_move(@node0, 1)
-			positions = @board.sorounding_nodes(@node0)
-			@board.connect_nodes(@node0, positions)
-
-			@board.move(@node1, 2)
-			positions = @board.sorounding_nodes(@node0)
-			@board.connect_nodes(@node0, positions)
-			positions = @board.sorounding_nodes(@node1)
-			@board.connect_nodes(@node1, positions)
-
-			@board.move(@node2, 3)
-			positions = @board.sorounding_nodes(@node1)
-			@board.connect_nodes(@node1, positions)
-			positions = @board.sorounding_nodes(@node2)
-			@board.connect_nodes(@node2, positions)
-
-			@board.move(@node3, 4)
-			positions = @board.sorounding_nodes(@node2)
-			@board.connect_nodes(@node2, positions)
-			positions = @board.sorounding_nodes(@node3)
-			@board.connect_nodes(@node3, positions)
-
-			@victory_check = Win_Check.new(@node, @board)
+				@victory_check = Win_Check.new(@node0)
 			end
 
 			it "responds to #check_right method" do
+				expect(@victory_check.node).to eq(@node0) 
 				expect(@victory_check).to respond_to(:right_check)
+				expect(@node0.right_node.right_node.right_node).to eq(@node3)
 			end
 
 			it "checks for a win condition to the right of the prime node" do
@@ -92,7 +61,10 @@ describe Win_Check do
 				expect(@victory_check2.right_check).to eq(false)
 			end
 		end
-
+	end
+end
+=begin
+	
 		describe "#left_check" do 
 			it "checks for a win condition to the left of the prime node" do
 				expect(victory_check.left_check).to be true
@@ -154,3 +126,5 @@ describe Win_Check do
  		end
 	end
 end
+
+=end

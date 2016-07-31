@@ -1,13 +1,15 @@
-class Win_Check
-	attr_accessor :board, :node
+require 'board'
+require 'node'
 
-	def initialize(node, board)
+class Win_Check
+	attr_accessor :node
+
+	def initialize(node)
 		@node  = node
-		@board = board
 	end
 
 	def right_check
-		if node.right_node.right_node.right_node is a node
+		if node.right_node.right_node.right_node != nil
 			true
 		else
 			false
