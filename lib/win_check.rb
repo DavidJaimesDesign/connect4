@@ -1,5 +1,5 @@
-require 'board'
-require 'node'
+require_relative 'board'
+require_relative 'node'
 
 class Win_Check
 	attr_accessor :node
