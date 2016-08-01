@@ -9,7 +9,11 @@ class Win_Check
 	end
 
 	def right_check
-		if node.right_node.right_node.right_node != nil
+		if node.right_node == nil 
+			false
+		elsif node.right_node.right_node == nil
+			false
+		elsif node.right_node.right_node.right_node != nil
 			true
 		else
 			false
@@ -17,7 +21,11 @@ class Win_Check
 	end
 
 	def left_check
-		if node.left_node.left_node.left_node != nil
+		if node.left_node == nil
+			false
+		elsif  node.left_node.left_node == nil
+			false
+		elsif node.left_node.left_node.left_node != nil
 			true
 		else
 			false
@@ -25,7 +33,11 @@ class Win_Check
 	end
 
 	def vertical_check
-		if node.vertical_node.vertical_node.vertical_node != nil
+		if node.vertical_node == nil
+			false
+		elsif node.vertical_node.vertical_node == nil
+			false
+		elsif node.vertical_node.vertical_node.vertical_node != nil
 			true
 		else
 			false
@@ -33,7 +45,11 @@ class Win_Check
 	end
 
 	def right_upper_diagonal_check
-		if node.upper_right_diagonal_node.upper_right_diagonal_node.upper_right_diagonal_node != nil
+		if node.upper_right_diagonal_node == nil
+			false
+		elsif node.upper_right_diagonal_node.upper_right_diagonal_node == nil
+			false
+		elsif node.upper_right_diagonal_node.upper_right_diagonal_node.upper_right_diagonal_node != nil
 			true
 		else
 			false
@@ -41,7 +57,11 @@ class Win_Check
 	end
 
 	def right_lower_diagonal_check
-		if node.lower_right_diagonal_node.lower_right_diagonal_node.lower_right_diagonal_node != nil
+		if node.lower_right_diagonal_node == nil
+			false
+		elsif node.lower_right_diagonal_node.lower_right_diagonal_node == nil
+			false
+		elsif node.lower_right_diagonal_node.lower_right_diagonal_node.lower_right_diagonal_node != nil
 			true
 		else
 			false
@@ -49,7 +69,11 @@ class Win_Check
 	end
 
 	def left_upper_diagonal_check
-		if node.upper_left_diagonal_node.upper_left_diagonal_node.upper_left_diagonal_node != nil
+		if node.upper_left_diagonal_node == nil
+			false
+		elsif node.upper_left_diagonal_node.upper_left_diagonal_node == nil
+			false
+		elsif node.upper_left_diagonal_node.upper_left_diagonal_node.upper_left_diagonal_node != nil
 			true
 		else
 			false
@@ -57,7 +81,11 @@ class Win_Check
 	end
 
 	def left_lower_diagonal_check
-		if node.lower_left_diagonal_node.lower_left_diagonal_node.lower_left_diagonal_node != nil
+		if node.lower_left_diagonal_node == nil
+			false
+		elsif node.lower_left_diagonal_node.lower_left_diagonal_node == nil
+			false
+		elsif node.lower_left_diagonal_node.lower_left_diagonal_node.lower_left_diagonal_node != nil
 			true
 		else
 			false

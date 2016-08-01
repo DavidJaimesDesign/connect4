@@ -62,6 +62,26 @@ while game_over == false do
 
 	board.display
 
+	game_over = true if win_check_p1.right_check
+	game_over = true if win_check_p1.left_check
+	game_over = true if win_check_p1.vertical_check
+	game_over = true if win_check_p1.right_upper_diagonal_check
+	game_over = true if win_check_p1.right_lower_diagonal_check
+	game_over = true if win_check_p1.left_upper_diagonal_check
+	game_over = true if win_check_p1.left_lower_diagonal_check
+
+	game_over = true if win_check_p1_0.right_check
+	game_over = true if win_check_p1_0.left_check
+	game_over = true if win_check_p1_0.vertical_check
+	game_over = true if win_check_p1_0.right_upper_diagonal_check
+	game_over = true if win_check_p1_0.right_lower_diagonal_check
+	game_over = true if win_check_p1_0.left_upper_diagonal_check
+	game_over = true if win_check_p1_0.left_lower_diagonal_check
+
+
+	puts "GAME OVER #{player1} WINS!" if game_over == true
+	break if game_over == true
+
 	#victory check
 
 	puts "#{player2} please pick a column"
@@ -85,5 +105,24 @@ while game_over == false do
 
 	board.display
 
+	game_over = true if win_check_p2.right_check
+	game_over = true if win_check_p2.left_check
+	game_over = true if win_check_p2.vertical_check
+	game_over = true if win_check_p2.right_upper_diagonal_check
+	game_over = true if win_check_p2.right_lower_diagonal_check
+	game_over = true if win_check_p2.left_upper_diagonal_check
+	game_over = true if win_check_p2.left_lower_diagonal_check
+
+	game_over = true if win_check_p2_0.right_check
+	game_over = true if win_check_p2_0.left_check
+	game_over = true if win_check_p2_0.vertical_check
+	game_over = true if win_check_p2_0.right_upper_diagonal_check
+	game_over = true if win_check_p2_0.right_lower_diagonal_check
+	game_over = true if win_check_p2_0.left_upper_diagonal_check
+	game_over = true if win_check_p2_0.left_lower_diagonal_check
+
+
+	puts "GAME OVER #{player2} WINS!" if game_over == true
+	break if game_over == true
 	#victory check
 end
