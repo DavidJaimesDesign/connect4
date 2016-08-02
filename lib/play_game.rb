@@ -63,12 +63,12 @@ while game_over == false do
 	board.display
 
 	game_over = true if win_check_p1.right_check
-	game_over = true if win_check_p1.left_check
-	game_over = true if win_check_p1.vertical_check
-	game_over = true if win_check_p1.right_upper_diagonal_check
-	game_over = true if win_check_p1.right_lower_diagonal_check
-	game_over = true if win_check_p1.left_upper_diagonal_check
-	game_over = true if win_check_p1.left_lower_diagonal_check
+	#game_over = true if win_check_p1.left_check
+	#game_over = true if win_check_p1.vertical_check
+	#game_over = true if win_check_p1.right_upper_diagonal_check
+	#game_over = true if win_check_p1.right_lower_diagonal_check
+	#game_over = true if win_check_p1.left_upper_diagonal_check
+	#game_over = true if win_check_p1.left_lower_diagonal_check
 =begin 
 	game_over = true if win_check_p1_0.right_check
 	game_over = true if win_check_p1_0.left_check
@@ -92,8 +92,8 @@ while game_over == false do
 	end
 	p2_node = Node.new(color: "black")
 	board.move(p2_node, p2_move)
-	board.display
-
+	#board display was here as well but it only showed up before a win
+	
 	positions2 = board.sorounding_nodes(p2_node)
 	board.connect_nodes(p2_node, positions2)
 
@@ -106,12 +106,12 @@ while game_over == false do
 	board.display
 
 	game_over = true if win_check_p2.right_check
-	game_over = true if win_check_p2.left_check
-	game_over = true if win_check_p2.vertical_check
-	game_over = true if win_check_p2.right_upper_diagonal_check
-	game_over = true if win_check_p2.right_lower_diagonal_check
-	game_over = true if win_check_p2.left_upper_diagonal_check
-	game_over = true if win_check_p2.left_lower_diagonal_check
+	#game_over = true if win_check_p2.left_check
+	#game_over = true if win_check_p2.vertical_check
+	#game_over = true if win_check_p2.right_upper_diagonal_check
+	#game_over = true if win_check_p2.right_lower_diagonal_check
+	#game_over = true if win_check_p2.left_upper_diagonal_check
+	#game_over = true if win_check_p2.left_lower_diagonal_check
 =begin
 	game_over = true if win_check_p2_0.right_check
 	game_over = true if win_check_p2_0.left_check
