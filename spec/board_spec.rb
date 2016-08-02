@@ -255,45 +255,4 @@ describe Board do
 			game_board.move(node2, 4)
 		end
 	end
-
-	context "checking for win" do
-		describe "#win_check" do
-			before(:each) do
-				@new_game = Board.new
-				@node1    = Node.new
-				@node2    = Node.new
-				@node3	  = Node.new
-				@node4	  = Node.new
-
-				@node1.color = "white"
-				@node2.color = "white"
-				@node3.color = "white"
-				@node4.color = "white"
-
-				@new_game.first_move(@node1, 2)
-				@new_game.move(@node2, 3)
-				@new_game.move(@node3, 4)
-				@new_game.move(@node4, 5)
-
-				@postions = @new_game.sorounding_nodes(@node1) 
-				@new_game.connect_nodes(@node1, @postions)
-
-				@postions = @new_game.sorrounding_nodes(@node2)
-				
-			end
-
-			it "phase 1: node links discovery" do
-				#returns true if the node has connected nodes
-				expect(@new_game.win_check(@node1)).to be true
-			end
-
-			it "phase 2: node links length calculation" do
-				expect(@new_game.win_check(@node1)).to eql(4) 
-			end
-
-			it "phase 3: end game or continue" do #this could be a seperate method
-
-			end
-		end
-	end
 end

@@ -69,7 +69,7 @@ while game_over == false do
 	game_over = true if win_check_p1.right_lower_diagonal_check
 	game_over = true if win_check_p1.left_upper_diagonal_check
 	game_over = true if win_check_p1.left_lower_diagonal_check
-
+=begin 
 	game_over = true if win_check_p1_0.right_check
 	game_over = true if win_check_p1_0.left_check
 	game_over = true if win_check_p1_0.vertical_check
@@ -77,7 +77,7 @@ while game_over == false do
 	game_over = true if win_check_p1_0.right_lower_diagonal_check
 	game_over = true if win_check_p1_0.left_upper_diagonal_check
 	game_over = true if win_check_p1_0.left_lower_diagonal_check
-
+=end
 
 	puts "GAME OVER #{player1} WINS!" if game_over == true
 	break if game_over == true
@@ -94,7 +94,7 @@ while game_over == false do
 	board.move(p2_node, p2_move)
 	board.display
 
-	positions2 = board.sorounding_nodes(p1_node)
+	positions2 = board.sorounding_nodes(p2_node)
 	board.connect_nodes(p2_node, positions2)
 
 	positions2_0 = board.sorounding_nodes(p2_node0)
@@ -112,7 +112,7 @@ while game_over == false do
 	game_over = true if win_check_p2.right_lower_diagonal_check
 	game_over = true if win_check_p2.left_upper_diagonal_check
 	game_over = true if win_check_p2.left_lower_diagonal_check
-
+=begin
 	game_over = true if win_check_p2_0.right_check
 	game_over = true if win_check_p2_0.left_check
 	game_over = true if win_check_p2_0.vertical_check
@@ -120,7 +120,7 @@ while game_over == false do
 	game_over = true if win_check_p2_0.right_lower_diagonal_check
 	game_over = true if win_check_p2_0.left_upper_diagonal_check
 	game_over = true if win_check_p2_0.left_lower_diagonal_check
-
+=end
 
 	puts "GAME OVER #{player2} WINS!" if game_over == true
 	break if game_over == true
