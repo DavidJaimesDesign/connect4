@@ -76,8 +76,8 @@ class Board
 				if v0 == node
 					positions[:center] 		= "[#{i}][#{i0}]"
 					positions[:below] 		= "[#{i + 1}][#{i0}]" unless ((i+1) == 6)    
-					positions[:right] 		= "[#{i}][#{i0 + 1}]"
-					positions[:left] 		= "[#{i}][#{i0 - 1}]"
+					positions[:right] 		= "[#{i}][#{i0 + 1}]"	
+					positions[:left] 		= "[#{i}][#{i0 - 1}]" unless ((i0 - 1) == -1)
 					positions[:right_upper] = "[#{i - 1}][#{i0 + 1}]" 
 					positions[:right_lower] = "[#{i + 1}][#{i0 + 1}]" unless ((i+1) == 6)  
 					positions[:left_upper]  = "[#{i - 1}][#{i0 - 1}]" 
